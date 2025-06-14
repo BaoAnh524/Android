@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">AppDocTruyen</string>
+    <string name="title_home">Trang Chủ</string>
+    <string name="title_library">Tủ Truyện</string>
+    <string name="title_account">Tài Khoản</string>
+    <string name="title_story">Đọc Truyện</string> <!-- Nếu cần cho StoryActivity -->
+</resources>
