@@ -11,8 +11,17 @@
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary">
 
-        <LinearLayout
+        <ImageButton
+            android:id="@+id/backButton"
             android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/back_arrow"
+        android:contentDescription="Back"
+        android:background="?android:attr/selectableItemBackground"
+        android:layout_gravity="start" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
             android:orientation="horizontal">
@@ -20,7 +29,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="Đăng nhập"
+                android:text="Đăng ký"
                 android:textSize="18sp"
                 android:textColor="@android:color/white"
                 android:gravity="center" />
@@ -43,18 +52,19 @@
         android:inputType="textPassword"
         android:layout_marginTop="16dp" />
 
-    <Button
-        android:id="@+id/loginButton"
+    <EditText
+        android:id="@+id/confirmPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Đăng nhập"
-        android:layout_marginTop="32dp" />
+        android:hint="Xác nhận mật khẩu"
+        android:inputType="textPassword"
+        android:layout_marginTop="16dp" />
 
     <Button
         android:id="@+id/registerButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Đăng ký"
-        android:layout_marginTop="16dp" />
+        android:layout_marginTop="32dp" />
 
 </LinearLayout>

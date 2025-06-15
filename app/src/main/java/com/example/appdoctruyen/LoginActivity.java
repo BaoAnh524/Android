@@ -8,70 +8,59 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
-import java.util.ArrayList;
-import java.util.List;
+import androidx.appcompat.widget.Toolbar;
 
 public class LoginActivity extends AppCompatActivity {
-    private EditText usernameEditText, passwordEditText;
+    private EditText emailEditText, passwordEditText;
+    private DatabaseHelper db;
     private SharedPreferences sharedPreferences;
-    private List<Account> accountList; // Danh sách tài khoản
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        usernameEditText = findViewById(R.id.username);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayShowTitleEnabled(false);
+        }
+
+        emailEditText = findViewById(R.id.email);
         passwordEditText = findViewById(R.id.password);
         Button loginButton = findViewById(R.id.loginButton);
+        Button registerButton = findViewById(R.id.registerButton);
+        db = new DatabaseHelper(this);
         sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE);
 
-        // Khởi tạo danh sách tài khoản (giả lập)
-        accountList = new ArrayList<>();
-        accountList.add(new Account("user", "pass"));
-        accountList.add(new Account("admin", "admin123"));
+        loginButton.setOnClickListener(v -> {
+            String email = emailEditText.getText().toString().trim();
+            if (!email.contains("@")) {
+                Toast.makeText(this, "Email không hợp lệ", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            String username = email.split("@")[0]; // Trích xuất username từ email
+            String password = passwordEditText.getText().toString().trim();
 
-        loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String username = usernameEditText.getText().toString().trim();
-                String password = passwordEditText.getText().toString().trim();
-
-                // Kiểm tra đầu vào
-                if (username.isEmpty() || password.isEmpty()) {
-                    Toast.makeText(LoginActivity.this, "Vui lòng nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                // Tìm tài khoản trong danh sách
-                Account foundAccount = findAccountByUsername(username);
-                if (foundAccount != null) {
-                    // So sánh mật khẩu
-                    if (foundAccount.getPassword().equals(password)) {
-                        SharedPreferences.Editor editor = sharedPreferences.edit();
-                        editor.putBoolean("isLoggedIn", true);
-                        editor.putString("username", username); // Lưu username
-                        editor.apply();
-                        Toast.makeText(LoginActivity.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(LoginActivity.this, HomeActivity.class));
-                        finish(); // Đóng LoginActivity
-                    } else {
-                        Toast.makeText(LoginActivity.this, "Mật khẩu không đúng", Toast.LENGTH_SHORT).show();
-                    }
-                } else {
-                    Toast.makeText(LoginActivity.this, "Tên đăng nhập không tồn tại", Toast.LENGTH_SHORT).show();
-                }
+            Account account = db.getAccountByUsername(username);
+            if (account != null && account.getPassword().equals(password)) {
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putBoolean("isLoggedIn", true);
+                editor.putString("username", username); // Lưu username (phần trước @)
+                editor.putString("phone", account.getPhone());
+                editor.putString("birthYear", account.getBirthYear());
+                editor.putString("gender", account.getGender());
+                editor.putString("email", account.getEmail()); // Lưu email đầy đủ
+                editor.apply();
+                startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                finish();
+            } else {
+                Toast.makeText(this, "Email hoặc mật khẩu không đúng", Toast.LENGTH_SHORT).show();
             }
         });
-    }
 
-    // Phương thức tìm tài khoản theo username
-    private Account findAccountByUsername(String username) {
-        for (Account account : accountList) {
-            if (account.getUsername().equals(username)) {
-                return account;
-            }
-        }
-        return null;
+        registerButton.setOnClickListener(v -> {
+            startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
+        });
     }
 }

@@ -17,44 +17,43 @@
             android:gravity="center"
             android:orientation="horizontal">
 
+            <ImageButton
+                android:id="@+id/backButton"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/back_arrow"
+            android:contentDescription="Back"
+            android:background="?android:attr/selectableItemBackground" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="Đăng nhập"
+                android:text="Đổi email"
                 android:textSize="18sp"
                 android:textColor="@android:color/white"
-                android:gravity="center" />
+                android:gravity="center"
+                android:layout_marginStart="8dp" />
         </LinearLayout>
     </androidx.appcompat.widget.Toolbar>
+
+    <EditText
+        android:id="@+id/currentPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Mật khẩu hiện tại"
+        android:inputType="textPassword" />
 
     <EditText
         android:id="@+id/email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Email"
-        android:inputType="textEmailAddress"
-        android:layout_marginTop="32dp" />
-
-    <EditText
-        android:id="@+id/password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Mật khẩu"
-        android:inputType="textPassword"
-        android:layout_marginTop="16dp" />
+        android:hint="Email mới"
+        android:inputType="textEmailAddress" />
 
     <Button
-        android:id="@+id/loginButton"
+        android:id="@+id/saveButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Đăng nhập"
-        android:layout_marginTop="32dp" />
-
-    <Button
-        android:id="@+id/registerButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Đăng ký"
-        android:layout_marginTop="16dp" />
+        android:text="Lưu" />
 
 </LinearLayout>
