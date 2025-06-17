@@ -3,6 +3,7 @@ package com.example.appdoctruyen;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -10,17 +11,28 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class ProfileActivity extends AppCompatActivity {
+    private TextView profileText;
+    private Button accountInfoButton, changePasswordButton, changeEmailButton, logoutButton;
+    private SharedPreferences sharedPreferences;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        TextView profileText = findViewById(R.id.profileText);
-        Button accountInfoButton = findViewById(R.id.accountInfoButton);
-        Button changePasswordButton = findViewById(R.id.changePasswordButton);
-        Button changeEmailButton = findViewById(R.id.changeEmailButton);
-        Button logoutButton = findViewById(R.id.logoutButton);
-        SharedPreferences sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE);
+        sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE);
+        boolean isLoggedIn = sharedPreferences.getBoolean("isLoggedIn", false);
+        if (!isLoggedIn) {
+            startActivity(new Intent(ProfileActivity.this, LoginActivity.class));
+            finish();
+            return;
+        }
+
+        profileText = findViewById(R.id.profileText);
+        accountInfoButton = findViewById(R.id.accountInfoButton);
+        changePasswordButton = findViewById(R.id.changePasswordButton);
+        changeEmailButton = findViewById(R.id.changeEmailButton);
+        logoutButton = findViewById(R.id.logoutButton);
         String username = sharedPreferences.getString("username", "Khách");
 
         profileText.setText("Hồ sơ của: " + username);
@@ -38,23 +50,26 @@ public class ProfileActivity extends AppCompatActivity {
             editor.remove("gender");
             editor.remove("email");
             editor.apply();
-            startActivity(new Intent(ProfileActivity.this, HomeActivity.class));
+            startActivity(new Intent(ProfileActivity.this, LoginActivity.class));
             finish();
         });
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigation);
+        bottomNavigationView.setSelectedItemId(R.id.navigation_account);
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
             int id = item.getItemId();
             if (id == R.id.navigation_home) {
                 startActivity(new Intent(ProfileActivity.this, HomeActivity.class));
                 overridePendingTransition(0, 0);
+                finish();
                 return true;
             } else if (id == R.id.navigation_library) {
                 startActivity(new Intent(ProfileActivity.this, LibraryActivity.class));
                 overridePendingTransition(0, 0);
+                finish();
                 return true;
             } else if (id == R.id.navigation_account) {
-                return true;
+                return true; // Ở lại trang hiện tại
             }
             return false;
         });

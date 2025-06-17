@@ -3,5 +3,6 @@
     <string name="title_home">Trang Chủ</string>
     <string name="title_library">Tủ Truyện</string>
     <string name="title_account">Tài Khoản</string>
-    <string name="title_story">Đọc Truyện</string> <!-- Nếu cần cho StoryActivity -->
+    <string name="title_story">Đọc Truyện</string>
+    <string name="default_web_client_id">671276391159-ac11s3e08oeek3le13gphkliirc7uph7.apps.googleusercontent.com</string>
 </resources>
