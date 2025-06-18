@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "671276391159",
+    "project_id": "appdoctruyen-8eba1",
+    "storage_bucket": "appdoctruyen-8eba1.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:671276391159:android:39b9fc7370f2822d6591f2",
+        "android_client_info": {
+          "package_name": "com.example.appdoctruyen"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "671276391159-ac11s3e08oeek3le13gphkliirc7uph7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.appdoctruyen",
+            "certificate_hash": "41de786fa1237aafc5f45e60df13590e51df6ae1"
+          }
+        },
+        {
+          "client_id": "671276391159-2s2io4b9vo2b134395ng4290al8udos0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAe8A29jqAVdQ1L5AnbZW4fm4E9Q9qyMyo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "671276391159-2s2io4b9vo2b134395ng4290al8udos0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

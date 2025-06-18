@@ -14,12 +14,12 @@ public class AccountActivity extends AppCompatActivity {
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
             int id = item.getItemId();
-            if (id == R.id.navigation_home) {
-                startActivity(new Intent(AccountActivity.this, HomeActivity.class));
+            if (id == R.id.Home) {
+                startActivity(new Intent(AccountActivity.this, MainActivity.class));
                 overridePendingTransition(0, 0);
                 return true;
-            } else if (id == R.id.navigation_library) {
-                startActivity(new Intent(AccountActivity.this, LibraryActivity.class));
+            }  else if (id == R.id.Setting) {
+                startActivity(new Intent(AccountActivity.this, SettingActivity.class));
                 overridePendingTransition(0, 0);
                 return true;
             } else if (id == R.id.navigation_account) {

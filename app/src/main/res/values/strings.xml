@@ -1,7 +1,13 @@
 <resources>
-    <string name="app_name">AppDocTruyen</string>
-    <string name="title_home">Trang Chủ</string>
-    <string name="title_library">Tủ Truyện</string>
+    <string name="app_name">Đọc truyện</string>
+    <string name="action_search">Search</string>
+
+        <string name="tags_list">Thể Loại</string>
+        <string name="Home">Trang Chủ</string>
+        <string name="Setting">Cài Đặt</string>
     <string name="title_account">Tài Khoản</string>
-    <string name="title_story">Đọc Truyện</string> <!-- Nếu cần cho StoryActivity -->
+    <string name="default_web_client_id">491663669767-smlladqua0sreqmke8h7d4iqda7bdjhi.apps.googleusercontent.com</string>
+    <string name="mode">Mode</string>
+    <string name="about_us">About Us</string>
+
 </resources>
