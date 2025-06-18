@@ -3,11 +3,11 @@ package com.example.appdoctruyen;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class ProfileActivity extends AppCompatActivity {
@@ -58,13 +58,13 @@ public class ProfileActivity extends AppCompatActivity {
         bottomNavigationView.setSelectedItemId(R.id.navigation_account);
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
             int id = item.getItemId();
-            if (id == R.id.navigation_home) {
-                startActivity(new Intent(ProfileActivity.this, HomeActivity.class));
+            if (id == R.id.Home) {
+                startActivity(new Intent(ProfileActivity.this, MainActivity.class));
                 overridePendingTransition(0, 0);
                 finish();
                 return true;
-            } else if (id == R.id.navigation_library) {
-                startActivity(new Intent(ProfileActivity.this, LibraryActivity.class));
+            } else if (id == R.id.Setting) {
+                startActivity(new Intent(ProfileActivity.this, SettingActivity.class));
                 overridePendingTransition(0, 0);
                 finish();
                 return true;

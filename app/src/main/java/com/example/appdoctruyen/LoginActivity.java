@@ -4,14 +4,15 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -40,16 +41,13 @@ public class LoginActivity extends AppCompatActivity {
 
         sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE);
         if (sharedPreferences.getBoolean("isLoggedIn", false)) {
-            startActivity(new Intent(this, HomeActivity.class));
+            startActivity(new Intent(this, MainActivity.class));
             finish();
             return;
         }
 
         Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayShowTitleEnabled(false);
-        }
+        toolbar.setTitle("Login");
 
         emailEditText = findViewById(R.id.email);
         passwordEditText = findViewById(R.id.password);
@@ -112,7 +110,7 @@ public class LoginActivity extends AppCompatActivity {
                 editor.putString("gender", account.getGender());
                 editor.putString("email", account.getEmail());
                 editor.apply();
-                startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                startActivity(new Intent(LoginActivity.this, MainActivity.class));
                 finish();
             } else {
                 Toast.makeText(this, "Email hoặc mật khẩu không đúng", Toast.LENGTH_SHORT).show();
@@ -161,7 +159,7 @@ public class LoginActivity extends AppCompatActivity {
                                 editor.putString("email", email);
                                 editor.apply();
                                 Log.d(TAG, "Firebase auth successful, redirecting to HomeActivity");
-                                startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                                startActivity(new Intent(LoginActivity.this, MainActivity.class));
                                 finish();
                             } else {
                                 Log.w(TAG, "FirebaseUser is null after successful sign-in");

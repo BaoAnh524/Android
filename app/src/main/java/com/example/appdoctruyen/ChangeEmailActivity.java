@@ -2,11 +2,11 @@ package com.example.appdoctruyen;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -21,10 +21,7 @@ public class ChangeEmailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_change_email);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayShowTitleEnabled(false);
-        }
+        toolbar.setTitle("Change_Email");
 
         currentPasswordEditText = findViewById(R.id.currentPassword);
         emailEditText = findViewById(R.id.email);
