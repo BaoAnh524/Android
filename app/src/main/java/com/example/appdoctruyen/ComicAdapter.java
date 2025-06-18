@@ -71,7 +71,7 @@ public class ComicAdapter extends RecyclerView.Adapter<ComicAdapter.ComicVH> imp
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             comic.setIsfavorite(0);
-                            DbHelper db = new DbHelper(view.getContext());
+                            DatabaseHelper db = new DatabaseHelper(view.getContext());
                             db.updateFavorite(comic.getId(), 0);
                             holder.imgFav.setImageResource(R.drawable.unlike);
                             notifyDataSetChanged();
@@ -90,7 +90,7 @@ public class ComicAdapter extends RecyclerView.Adapter<ComicAdapter.ComicVH> imp
                 else
                 {
                     comic.setIsfavorite(1);
-                    DbHelper db = new DbHelper(view.getContext());
+                    DatabaseHelper db = new DatabaseHelper(view.getContext());
                     db.updateFavorite(comic.getId(), 1);
                     holder.imgFav.setImageResource(R.drawable.like);
                     notifyDataSetChanged();

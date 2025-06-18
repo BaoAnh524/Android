@@ -9,7 +9,7 @@ public class App extends Application {
     public static ArrayList<Comic> comics;
     public static ArrayList<Comic> getComic(Context context){
         if (comics == null) {
-            DbHelper db = new DbHelper(context);
+            DatabaseHelper db = new DatabaseHelper(context);
             comics = db.getAllComic();
         }
         return comics;
