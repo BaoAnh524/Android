@@ -25,7 +25,7 @@ public class ChapterSheet extends AppCompatActivity {
         recyclerView = findViewById(R.id.chapter_list);
         Intent intent = getIntent();
         String i = intent.getStringExtra("id");
-        DbHelper db = new DbHelper(this);
+        DatabaseHelper db = new DatabaseHelper(this);
         chapters = db.getAllUrl(i);
         ChapterSheetAdapter adapter = new ChapterSheetAdapter(chapters);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());

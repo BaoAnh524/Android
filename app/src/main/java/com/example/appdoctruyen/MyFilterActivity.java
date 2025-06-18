@@ -41,7 +41,7 @@ public class MyFilterActivity extends AppCompatActivity {
     public int checkCategory(int IdCategory, String tagFilter)
     {
         int temp = 0;
-        DbHelper db = new DbHelper(this);
+        DatabaseHelper db = new DatabaseHelper(this);
         ArrayList<ComicCategory> categories =  db.getAllCategory();
         for (ComicCategory item: categories)
         {

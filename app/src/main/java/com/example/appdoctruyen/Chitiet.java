@@ -34,7 +34,7 @@ public class Chitiet extends AppCompatActivity {
             if(item.getId().equals(id))
                 comic = item;
         }
-        DbHelper db = new DbHelper(this);
+        DatabaseHelper db = new DatabaseHelper(this);
         if(comic != null){
             detailname.setText(comic.name);
             detailauthor.setText(comic.author);
