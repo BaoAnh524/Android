@@ -65,7 +65,8 @@
         android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/txName"
-        app:srcCompat="@drawable/unlike" />
+        app:srcCompat="@drawable/unlike"
+        tools:ignore="MissingConstraints" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
